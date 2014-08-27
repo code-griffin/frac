@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="4104714481">
+    <data-source source="LOCAL" name="Rails Pumping: development" uuid="6a84adba-c03f-47e0-a7ea-85fe259cf386">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/pumping_development</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfcbdfcedfc7dfc3dfc4</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails Pumping: test" uuid="18df5644-6077-4d88-bb6e-c5668382c467">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/pumping_test</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfcbdfcedfc7dfc3dfc4</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails Pumping: production" uuid="96431997-a897-4953-8224-cfd647f78732">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/pumping_production</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfcbdfcedfc7dfc3dfc4</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

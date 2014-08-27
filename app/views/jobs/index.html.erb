@@ -1,0 +1,35 @@
+<header>
+  <div class="width-container">
+    <a href="#" id="logo">
+    </a>
+
+    <ul id="nav">
+      <li>
+        <%= link_to "All Jobs", jobs_path, :class => "active" %>
+      </li>
+    </ul>
+
+    <button id="mobile-menu-button"></button>
+
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <button id="new-job-button" class="button">
+      <span class="icon">+</span>
+      New Job
+    </button>
+
+    <h1>
+      All Jobs
+    </h1>
+
+  </div>
+
+  <div class="row">
+    <ul id="job-list">
+      <%= render :partial => @jobs if @jobs.present? %>
+    </ul>
+  </div>
+
+</div>

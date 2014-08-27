@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pumping</title>
+  <%= stylesheet_link_tag    'application-all', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application-all', 'data-turbolinks-track' => true %>
+
+  <%= stylesheet_link_tag    'application-mobile', media: 'only screen and (max-width: 991px)', 'data-turbolinks-track' => true %>
+
+  <!--[if lte IE 8]>
+    <%= stylesheet_link_tag "application-ie8", :media => "all" %>
+    <%= javascript_include_tag 'application-ie8', 'data-turbolinks-track' => true %>
+<![endif]-->
+
+  <!--[if lte IE 9]>
+    <%= javascript_include_tag 'application-ie9', 'data-turbolinks-track' => true %>
+<![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<script src="/assets/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets/main.js" type="text/javascript"></script>
+<script src="/assets/stage.js" type="text/javascript"></script>
+</body>
+</html>

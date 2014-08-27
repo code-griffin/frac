@@ -1,0 +1,34 @@
+<% if @result == "success" %>
+var current_stage = $('.current-stage');
+
+// change current stage (completed)'s total time and percentage of elapsed time
+<%
+time_total = (@stage.end_time - @stage.start_time).to_i.abs / 3600.0
+time_elapsed = (Time.now - @stage.start_time).to_i.abs / 3600.0
+if time_total == 0.0
+percentage = 0
+else
+percentage = (time_elapsed / time_total) * 100
+percentage = percentage > 100 ? 100 : percentage
+end
+%>
+current_stage.find('.elapsed').html('<%= sprintf('%.2f', time_elapsed)%> <span>hrs</span>')
+current_stage.find('.total').html('<%= sprintf('%.2f', time_total)%> <span>hrs</span>')
+current_stage.find('.status-bar .bar').css('width', '<%=percentage%>%')
+console.log('<%= @stage.start_time %>')
+console.log('<%= @stage.end_time %>')
+// change next stages' start and end time
+<% @next_stages.each { |stage| %>
+current_stage.find('input.start_time').val("<%= stage.start_time %>");
+current_stage.find('input.end_time').val("<%= stage.end_time %>");
+current_stage.find('.start-time-day').html('<%= stage.start_time.strftime("%A %-m/%e") %>');
+current_stage.find('.start-time').html('<%= stage.start_time.strftime("%l:%M") %>')
+current_stage.find('.start-time-ampm').html('<%= stage.start_time.strftime("%P") %>')
+current_stage.find('.end-time').html('<%= stage.end_time.strftime("%l:%M") %>')
+current_stage.find('.end-time-ampm').html('<%= stage.end_time.strftime("%P") %>')
+current_stage = current_stage.next();
+<% }%>
+<% else %>
+alert('There is an error while processing your request.');
+<% end %>
+$('.current-stage .add-time, .current-stage .remove-time').removeClass('working')

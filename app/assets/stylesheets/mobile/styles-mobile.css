@@ -1,0 +1,157 @@
+#logo{
+    display: none;
+}
+
+#nav a{
+    display: none;
+}
+
+#nav a.active{
+    background: #14a3e5;
+    float: none;
+    display: block;
+    color: #fff;
+}
+
+#mobile-menu-button,
+#back-button{
+    display: block;
+}
+
+h1,
+#new-job-button{
+    display: none;
+}
+
+#job-list li:nth-child(2n){
+    background: #4d4d4d;
+    margin: 0;
+    padding: 0;
+}
+
+#job-list li:last-child{
+    margin-bottom: 50px;
+}
+
+#job-list .job{
+    display: block;
+    padding: 9px 0 9px 15px;
+}
+
+#job-tabs + .container {
+     padding-top: 74px;
+ }
+
+#job-tabs li {
+    width: 33.33%;
+}
+
+#job-tabs a {
+    padding: 15px 0 13px;
+    font-size: 10px;
+}
+
+.job-stage h2{
+    margin: 21px auto 0;
+    float: none;
+    text-align: center;
+}
+
+.stage-nav{
+    float: none;
+    margin: 0 auto;
+}
+
+.stage-nav button{
+    float: left;
+}
+
+.stage-nav .left{
+    margin: -23px 0 0 29px;
+}
+
+.stage-nav .right{
+    float: right;
+    margin: -23px 29px 0 0;
+}
+
+.status-container {
+    padding: 0 0 12px;
+    margin: 0;
+    text-align: center;
+    height: 62px;
+}
+
+.status-container > span:first-child {
+    display: none;
+}
+
+.dropdown {
+    width: 100%!important;
+    background: transparent;
+    margin: 2px 0 0;
+    padding: 6px 13px 0;
+    text-align: center;
+}
+
+span.dropdown:after {
+    content: '';
+    display: none;
+}
+
+.status-container .stage-complete-button{
+    display: none;
+}
+
+.job-stage > .stage-complete-button{
+    display: none;
+}
+
+.update-status{
+    display: inline-block;
+}
+
+.status-info {
+    margin: 9px 0 0;
+    padding: 0 15px 0;
+}
+
+.button-container {
+    margin: 7px 0 0 0;
+}
+
+.status-bar {
+    margin: 26px 0 0 0;
+    padding: 0 15px 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+}
+
+select.dropdown {
+    z-index: -5;
+    display: none;
+}
+
+span.dropdown{
+    z-index: 10;
+    display: block!important;
+}
+
+.dropdown .custom-dropdownInner{
+    z-index: 10;
+}
+
+.job-stage .status-completed .status-text {
+    font-size: 12px;
+}
+
+.job-stage .status-completed span {
+    margin: 5px 0;
+}
+
+.job-stage .status-completed {
+    margin: 10px 0;
+}
+
+.current-stage > .stage-complete-button {
+    display: block;
+}

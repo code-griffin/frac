@@ -1,0 +1,32 @@
+<% if @result == "success" %>
+    var current_stage = $('.current-stage');
+    $('.current-stage .status-completed .status').html('<%= @status.name%>')
+    current_stage.find('.status-bar .bar').css('width', '100%')
+    current_stage.removeClass('current-stage').addClass('completed')
+    var next_stage = current_stage.next();
+    if (next_stage.length) {
+        current_stage.removeClass('active')
+        next_stage.removeClass('not-started').addClass('current-stage active')
+        next_stage.find('select.dropdown').trigger('render');
+    }
+
+    // change current stage (completed)'s elapsed and total time based on current time
+    <% time_elapsed = (@stage.end_time - @stage.start_time).to_i.abs / 3600.0 %>
+    current_stage.find('.elapsed').html('<%= sprintf('%.2f', time_elapsed)%> <span>hrs</span>')
+
+    // change next stages' start and end time
+    <% @next_stages.each { |stage|
+      time_elapsed = (stage.end_time - stage.start_time).to_i.abs / 3600.0%>
+      current_stage.find('.total').html('<%= sprintf('%.2f', time_elapsed)%> <span>hrs</span>')
+      current_stage.find('input.start_time').val("<%= stage.start_time %>");
+      current_stage.find('input.end_time').val("<%= stage.end_time %>");
+      current_stage.find('.start-time').html('<%= stage.start_time.strftime("%l:%M") %>')
+      current_stage.find('.start-time-ampm').html('<%= stage.start_time.strftime("%P") %>')
+      current_stage.find('.end-time').html('<%= stage.end_time.strftime("%l:%M") %>')
+      current_stage.find('.end-time-ampm').html('<%= stage.end_time.strftime("%P") %>')
+      current_stage = current_stage.next();
+    <% }%>
+<% else %>
+    alert('There is an error while processing your request.');
+<% end %>
+$('.stage-complete-button').removeClass('working')

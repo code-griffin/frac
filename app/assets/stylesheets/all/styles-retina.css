@@ -1,0 +1,13 @@
+@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+    #mobile-menu-button{
+        background-image: url("../images/menu-button@2x.png");
+    }
+
+    #back-button{
+        background-image: url("../images/back-button@2x.png");
+    }
+
+}

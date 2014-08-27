@@ -1,0 +1,14 @@
+<% if @result == "success" %>
+var current_stage = $('.current-stage');
+$('.current-stage .status-completed .status').html('<%= @status.name%>')
+var next_stage = current_stage.next();
+if (next_stage.length) {
+    current_stage.removeClass('current-stage').addClass('completed')
+    next_stage.removeClass('not-started').addClass('current-stage')
+    next_stage.find('select.dropdown').trigger('render');
+}
+
+<% else %>
+alert('There is an error while processing your request.');
+<% end %>
+$('.stage-complete-button').removeClass('working')

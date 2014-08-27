@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url('/assets/gothambold-webfont-webfont.eot');
+    src: url('/assets/gothambold-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/gothambold-webfont-webfont.woff') format('woff'),
+    url('/assets/gothambold-webfont-webfont.ttf') format('truetype'),
+    url('/assets/gothambold-webfont-webfont.svg#gothamboldregular') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/assets/gothambook-webfont-webfont.eot');
+    src: url('/assets/gothambook-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/gothambook-webfont-webfont.woff') format('woff'),
+    url('/assets/gothambook-webfont-webfont.ttf') format('truetype'),
+    url('/assets/gothambook-webfont-webfont.svg#gothambookregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/assets/gothamlight-webfont-webfont.eot');
+    src: url('/assets/gothamlight-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/gothamlight-webfont-webfont.woff') format('woff'),
+    url('/assets/gothamlight-webfont-webfont.ttf') format('truetype'),
+    url('/assets/gothamlight-webfont-webfont.svg#gothamlightregular') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/assets/gothammedium-webfont-webfont.eot');
+    src: url('/assets/gothammedium-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/gothammedium-webfont-webfont.woff') format('woff'),
+    url('/assets/gothammedium-webfont-webfont.ttf') format('truetype'),
+    url('/assets/gothammedium-webfont-webfont.svg#gothammediumregular') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}

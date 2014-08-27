@@ -1,0 +1,23 @@
+h1{
+    border-bottom: 4px solid #4d4d4d;
+}
+
+.stage-nav .left span{
+    border-color: transparent #a0a0a0 transparent transparent;
+}
+
+.stage-nav .right span{
+    border-color: transparent transparent transparent #a0a0a0;
+}
+
+.status-container{
+    border-bottom: 1px solid #6a6a6a;
+}
+
+.dropdown{
+    background: #7a7a7a;
+}
+
+#mobile-overlay {
+    background: #000;
+}

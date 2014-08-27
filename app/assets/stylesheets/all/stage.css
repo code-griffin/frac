@@ -1,0 +1,70 @@
+.stage-complete-button {
+  display: none;
+}
+
+.button-container {
+    display: none;
+}
+
+.current-stage .stage-complete-button {
+    display: block;
+}
+
+.current-stage .button-container {
+    display: block;
+}
+
+.job-stage.completed .bar-outer .bar {
+    background: #00ce1d;
+    width: 100%;
+}
+
+.job-stage.not-started .bar-outer .bar {
+    background: gray;
+    width: 100%;
+}
+
+.job-stage.completed .status-container .dropdown,
+.job-stage.completed .status-container .update-status,
+.job-stage.not-started .status-container .dropdown,
+.job-stage.not-started .status-container .update-status{
+    display: none !important;
+}
+
+.status-container .status-not-started,
+.status-container .status-completed {
+    display: none;
+}
+
+.job-stage.completed .status-completed {
+    display: block;
+    margin: 5px 0;
+}
+.job-stage.not-started .status-not-started {
+    display: block;
+    margin: 8px 0 20px;
+}
+
+.job-stage .status-text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.job-stage .status-not-started .status-text {
+    color: #bbbbbb;
+}
+
+.job-stage .status-completed .status-text {
+    color: #00ce1d;
+    display: block;
+}
+
+.job-stage .status-completed .status {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.stage-complete-button.working {
+    cursor: default;
+}
