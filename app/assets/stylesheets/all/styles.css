@@ -232,6 +232,7 @@ h1{
     font-weight: bold;
     margin: 21px 44px 0 37px;
     float: left;
+    width: 120px;
 }
 
 .stage-nav{

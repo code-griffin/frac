@@ -63,5 +63,11 @@ $(function() {
             beforeSend: function(request) { request.setRequestHeader("Accept", "text/javascript"); },
             success: function(res) {}
         })
+   });
+
+    $("select.dropdown").change(function() {
+        var value = this.value;
+        update_status(value);
     });
+
 })

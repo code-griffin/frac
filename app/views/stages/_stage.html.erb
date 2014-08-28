@@ -100,7 +100,16 @@
     </p>
 
     <div class="bar-outer">
-      <div class="bar"></div>
+      <% time_total = (stage.end_time - stage.start_time).to_i.abs / 1.0
+         time_elapsed = (Time.now - stage.start_time).to_i.abs / 1.0
+         if time_total == 0
+           percentage = 0
+         else
+           percentage = (time_elapsed / time_total) * 100
+           percentage = percentage > 100 ? 100 : percentage
+         end
+      %>
+      <div class="bar" style="<%= @job.current_stage == stage.stage_no ? "width:"+percentage.to_s+"%" : "" %>;"></div>
     </div>
 
     <span class="elapsed">
@@ -114,4 +123,13 @@
   <button class="stage-complete-button button">
     Stage Complete
   </button>
+
+  <% if @job.current_stage == stage.stage_no
+     time_to_stage_complete = (stage.end_time - Time.now).to_i
+     time_to_stage_complete = time_to_stage_complete < 0 ? 0 : time_to_stage_complete;
+  %>
+  <script>
+    $(".current-stage .bar").animate({ width: "100%" }, <%=time_to_stage_complete * 1000%>);
+  </script>
+  <% end %>
 </div>

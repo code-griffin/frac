@@ -23,7 +23,7 @@ class JobsController < ApplicationController
 
     if @job.present? && @status.present? && @job.current_stage == stage_no.to_i
       @result = "success"
-      @job.update_status(stage_no, status_id)
+      @job.complete_stage(stage_no, status_id)
       if @job.current_stage < @job.stages.count
         @job.current_stage += 1
       end
@@ -42,9 +42,7 @@ class JobsController < ApplicationController
     @job = Job.find(job_id)
     @status = Status.find(status_id)
 
-    @stage = @job.stages.find_by(stage_no: stage_no)
-
-    if @job.present? && @stage.present? && @status.present? && @job.current_stage == stage_no.to_i
+    if @job.present? && @status.present? && @job.current_stage == stage_no.to_i
       @result = "success"
       @job.update_status(stage_no, status_id)
     end

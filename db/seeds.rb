@@ -18,7 +18,7 @@ Status.create!(:name => 'Other Problem')
   # start_time = Time.now.change(:usec => 0)
   start_time = Time.now
   stage_count.times do |j|
-    end_time = start_time + 60 * 60
+    end_time = start_time + 15 * 60
     job.stages.create!(
         :stage_no => j+1,
         :status_id => 1,

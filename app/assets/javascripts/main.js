@@ -1,4 +1,20 @@
+function update_status(value) {
+    var job_id = $('#job-stages').attr('job_id');
+    var stage_no = $('.current-stage').attr('stage_no');
+
+    data = {job_id: job_id, stage_no: stage_no, status_id: value};
+
+    $.ajax({
+        type:'PUT',
+        url: '/jobs/update_status',
+        data: data,
+        beforeSend: function(request) { request.setRequestHeader("Accept", "text/javascript"); },
+        success: function(res) {}
+    })
+}
+
 $(document).ready(function(){
+
     $('.dropdown').customSelect({
         customClass:'custom-dropdown'
     });
@@ -45,6 +61,8 @@ $(document).ready(function(){
             dropdown.val(option_value);
             dropdown.trigger('render');
             overlay.fadeOut();
+
+            update_status(option_value);
         })
     });
 
@@ -99,7 +117,7 @@ $(document).ready(function(){
         } else {
             percent = Math.min((elapsed / diff_time) * 100, 100);
         }
-		$elm.find('.status-bar .bar').css('width', percent+'%');
+//		$elm.find('.status-bar .bar').css('width', percent+'%');
 		
 		var hours = end_time.getHours();
 		var minutes = end_time.getMinutes();
