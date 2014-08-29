@@ -70,4 +70,12 @@ $(function() {
         update_status(value);
     });
 
+    $("#new-job-button").bind('click', function() {
+        $.ajax({
+            type:'PUT',
+            url: '/jobs/new_job',
+            beforeSend: function(request) { request.setRequestHeader("Accept", "text/javascript"); },
+            success: function(res) {}
+        })
+    })
 })

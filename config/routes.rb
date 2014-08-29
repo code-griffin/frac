@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'jobs#index'
+  # root 'jobs#index'
 
   match '/jobs/detail', :to => 'jobs#detail', :via => :get
   match '/jobs/complete', :to => 'jobs#complete', :via => :put
   match '/jobs/update_status', :to => 'jobs#update_status', :via => :put
   match '/jobs/update_time', :to => 'jobs#update_time', :via => :put
+  match '/jobs/new_job', :to => 'jobs#new_job', :via => :put
+  match '/jobs/init_status', :to => 'jobs#init_status', :via => :get
   resources :jobs do
 
   end

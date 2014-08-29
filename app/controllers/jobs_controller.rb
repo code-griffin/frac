@@ -12,6 +12,25 @@ class JobsController < ApplicationController
     @statuses = Status.all
   end
 
+  def new_job
+    @job = Job.create(:name => 'Job #' + Job.maximum(:id).next.to_s, :current_stage => 1)
+    @stage_count = 20 + rand(10)
+    # start_time = Time.now.change(:usec => 0)
+    @start_time = Time.now
+    @stage_count.times do |j|
+      @end_time = @start_time + 15 * 60
+      @job.stages.create!(
+          :stage_no => j+1,
+          :status_id => 1,
+          :start_time => @start_time,
+          :end_time => @end_time,
+          :completed => false
+      )
+      @start_time = @end_time
+    end
+    @current_stage = @job.stages.first
+  end
+
   def complete
     job_id = params[:job_id]
     stage_no = params[:stage_no]
@@ -62,6 +81,16 @@ class JobsController < ApplicationController
       @job.update_time(stage_no, add_time.to_i)
       @next_stages = @job.stages.where("stage_no >= ?", stage_no).order(:stage_no)
       @stage = @job.stages.find_by(stage_no: stage_no)
+    end
+  end
+
+  def init_status
+    if Status.count == 0
+      Status.create!(:name => 'Pumping (No Problems)')
+      Status.create!(:name => 'Pumping (With Problems)')
+      Status.create!(:name => 'Resource Delays')
+      Status.create!(:name => 'Fluid Treatment')
+      Status.create!(:name => 'Other Problem')
     end
   end
 
