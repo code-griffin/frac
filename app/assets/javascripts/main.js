@@ -100,7 +100,7 @@ $(document).ready(function(){
 //		}
 //		$(this).append($('<input type="hidden" />').addClass('start_time').val(start_time));
 //		$(this).append($('<input type="hidden" />').addClass('end_time').val(end_time));
-		update_time($(this).closest('.job-stage'));
+//		update_time($(this).closest('.job-stage'));
 	});
 	function update_time($elm) {
 		var start_time = new Date($elm.find('input.start_time').val());

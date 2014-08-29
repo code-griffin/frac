@@ -77,6 +77,7 @@
   </div>
   <div class="status-bar">
     <p class="elapsed">
+      <span id="elapsed-time">
       <% if @job.current_stage > stage.stage_no
         time_elapsed = (stage.end_time - stage.start_time).to_i.abs / 3600.0
         concat sprintf('%.2f', time_elapsed)
@@ -88,6 +89,7 @@
       <% if @job.current_stage < stage.stage_no
         concat "0.00"
       end %>
+      </span>
       <span>hrs</span>
     </p>
 

@@ -18,7 +18,7 @@
 
     // change current stage (completed)'s elapsed and total time based on current time
     <% time_elapsed = (@stage.end_time - @stage.start_time).to_i.abs / 3600.0 %>
-    current_stage.find('.elapsed').html('<%= sprintf('%.2f', time_elapsed)%> <span>hrs</span>')
+    current_stage.find('.elapsed').html('<span id="elapsed-time"><%= sprintf('%.2f', time_elapsed)%></span><span>hrs</span>')
 
     // change next stages' start and end time
     <% @next_stages.each { |stage|

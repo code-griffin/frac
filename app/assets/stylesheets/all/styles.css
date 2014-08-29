@@ -451,7 +451,11 @@ p.elapsed{
     font-size: 16px;
 }
 
-p.elapsed span{
+p.elapsed #elapsed-time {
+    font-weight: bold;
+}
+
+p.elapsed span:last-child{
     font-size: 9px;
 }
 

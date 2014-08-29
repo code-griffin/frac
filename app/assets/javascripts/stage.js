@@ -78,4 +78,13 @@ $(function() {
             success: function(res) {}
         })
     })
+
+    var interval = null;
+    interval = setInterval(updateElapsedTime,36000);
+
+    function updateElapsedTime(){
+        elapsed_time = $('.current-stage #elapsed-time').html();
+        elapsed_time = parseFloat(elapsed_time) + 0.01;
+        $('.current-stage #elapsed-time').html(elapsed_time.toFixed(2));
+    }
 })
