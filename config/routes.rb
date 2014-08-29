@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'jobs#index'
+  root 'jobs#index'
 
   match '/jobs/detail', :to => 'jobs#detail', :via => :get
   match '/jobs/complete', :to => 'jobs#complete', :via => :put
