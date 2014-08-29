@@ -79,8 +79,8 @@ $(function() {
         })
     })
 
-    var interval = null;
     interval = setInterval(updateElapsedTime,36000);
+    console.log(interval);
 
     function updateElapsedTime(){
         elapsed_time = $('.current-stage #elapsed-time').html();
