@@ -80,6 +80,4 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.threadsafe! unless ENV['THREADSAFE'] == 'off'
-
 end
