@@ -21,7 +21,7 @@
 
 .job-stage.not-started .bar-outer .bar {
     background: gray;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 .job-stage.completed .status-container .dropdown,
@@ -67,4 +67,8 @@
 
 .stage-complete-button.working {
     cursor: default;
+}
+
+.current-stage .bar-outer {
+    color: #ffffff;
 }

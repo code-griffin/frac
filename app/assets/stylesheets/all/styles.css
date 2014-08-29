@@ -532,3 +532,7 @@ p.total span{
 #dropdown-options li.active:before{
     color: #ff8000;
 }
+
+.job-stage.not-started .bar-outer {
+    background: gray;
+}

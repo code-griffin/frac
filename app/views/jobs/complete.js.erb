@@ -8,6 +8,12 @@
         current_stage.removeClass('active')
         next_stage.removeClass('not-started').addClass('current-stage active')
         next_stage.find('select.dropdown').trigger('render');
+        <%
+        time_to_stage_complete = (@next_stage.end_time - @next_stage.start_time).to_i
+        time_to_stage_complete = time_to_stage_complete < 0 ? 0 : time_to_stage_complete;
+        %>
+
+        $(".current-stage .bar").animate({ width: "100%" }, <%=time_to_stage_complete * 1000%>);
     }
 
     // change current stage (completed)'s elapsed and total time based on current time

@@ -29,6 +29,7 @@ class JobsController < ApplicationController
       end
       @job.save!
       @next_stages = @job.stages.where("stage_no >= ?", stage_no).order(:stage_no)
+      @next_stage = @job.stages.find_by(stage_no: stage_no.to_i+1)
       @stage = @job.stages.find_by(stage_no: stage_no)
     end
   end
