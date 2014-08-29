@@ -13,7 +13,7 @@ class JobsController < ApplicationController
   end
 
   def new_job
-    @job = Job.create(:name => 'Job #' + Job.maximum(:id).next.to_s, :current_stage => 1)
+    @job = Job.create(:name => 'Job #' + (Job.maximum(:id).to_i+1).to_s, :current_stage => 1)
     @stage_count = 20 + rand(10)
     # start_time = Time.now.change(:usec => 0)
     @start_time = Time.now
@@ -21,14 +21,13 @@ class JobsController < ApplicationController
       @end_time = @start_time + 15 * 60
       @job.stages.create!(
           :stage_no => j+1,
-          :status_id => 1,
+          :status_id => Status.first.id,
           :start_time => @start_time,
           :end_time => @end_time,
           :completed => false
       )
       @start_time = @end_time
     end
-    @current_stage = @job.stages.first
   end
 
   def complete
