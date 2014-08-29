@@ -2,6 +2,7 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all.order(:id)
+    @statuses = Status.all
   end
 
   def detail
@@ -28,6 +29,7 @@ class JobsController < ApplicationController
       )
       @start_time = @end_time
     end
+    @current_stage = @job.stages.first
   end
 
   def complete

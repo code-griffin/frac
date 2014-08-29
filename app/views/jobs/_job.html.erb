@@ -7,7 +7,10 @@
         Stage <%= job.current_stage.to_s %>
     </span>
     <span class="status">
-        Pumping (No Problems)
+        <%
+           @current_stage = job.stages.find_by(:stage_no => job.current_stage)
+           concat statuses.find(@current_stage.status_id).name
+        %>
     </span>
   </a>
 </li>

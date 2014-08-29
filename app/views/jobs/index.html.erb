@@ -28,7 +28,7 @@
 
   <div class="row">
     <ul id="job-list">
-      <%= render :partial => @jobs if @jobs.present? %>
+      <%= render :partial => @jobs, :locals => {:statuses => @statuses} if @jobs.present? %>
     </ul>
   </div>
 

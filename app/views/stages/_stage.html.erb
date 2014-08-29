@@ -15,7 +15,7 @@
     <span>Status</span>
 
     <select class="dropdown">
-      <%= render :partial => @statuses if @statuses.present? %>
+      <%= render :partial => @statuses, :locals => {:current_status => stage.status_id} if @statuses.present? %>
     </select>
     <a class="update-status">
       update status
