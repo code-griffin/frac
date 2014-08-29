@@ -29,7 +29,7 @@ class JobsController < ApplicationController
       )
       @start_time = @end_time
     end
-    @current_stage = @job.stages.first
+    @statuses = Status.all
   end
 
   def complete

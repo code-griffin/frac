@@ -1,1 +1,1 @@
-$("#job-list").append('<%= escape_javascript(render :partial => @job)%>')
+$("#job-list").append('<%= escape_javascript(render :partial => @job, :locals => {:statuses => @statuses})%>')
