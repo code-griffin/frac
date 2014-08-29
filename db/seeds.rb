@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require Status
+require Job
+require Stage
+
 Status.create!(:name => 'Pumping (No Problems)')
 Status.create!(:name => 'Pumping (With Problems)')
 Status.create!(:name => 'Resource Delays')
