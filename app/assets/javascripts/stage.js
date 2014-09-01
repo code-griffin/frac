@@ -1,3 +1,4 @@
+var interval = null;
 $(function() {
     $(document.body).on('click', '.current-stage .stage-complete-button', function() {
         console.log('complete-button clicked');
@@ -63,7 +64,7 @@ $(function() {
             beforeSend: function(request) { request.setRequestHeader("Accept", "text/javascript"); },
             success: function(res) {}
         })
-   });
+    });
 
     $("select.dropdown").change(function() {
         var value = this.value;
@@ -79,8 +80,9 @@ $(function() {
         })
     })
 
-    interval = setInterval(updateElapsedTime,36000);
     console.log(interval);
+    if(interval == null)
+        interval = setInterval(updateElapsedTime,36000);
 
     function updateElapsedTime(){
         elapsed_time = $('.current-stage #elapsed-time').html();

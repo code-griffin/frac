@@ -15,8 +15,8 @@ time_to_stage_complete = (@stage.end_time - Time.now).to_i
 time_to_stage_complete = time_to_stage_complete < 0 ? 0 : time_to_stage_complete;
 %>
 
-current_stage.find('.elapsed').html('<span id="elapsed-time"><%= sprintf('%.2f', time_elapsed)%></span> <span>hrs</span>')
-current_stage.find('.total').html('<%= sprintf('%.2f', time_total)%> <span>hrs</span>')
+current_stage.find('.elapsed #elapsed-time').html('<%= sprintf('%.2f', time_elapsed)%>')
+current_stage.find('p.total').html('<%= sprintf('%.2f', time_total)%> <span>hrs</span>')
 current_stage.find('.status-bar .bar').css('width', '<%=percentage%>%')
 
 $(".current-stage .bar").stop();
