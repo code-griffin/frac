@@ -10,4 +10,9 @@
         background-image: url("../images/back-button@2x.png");
     }
 
+    .product-container .product-checklist li:first-child:before,
+    .custom-checkbox{
+        background-image: url("../images/checkbox-sprite@2x.png");
+    }
+
 }

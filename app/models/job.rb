@@ -37,4 +37,18 @@ class Job < ActiveRecord::Base
       }
     end
   end
+
+  def add_sand(stage_no, sand_id, flag)
+    stage = stages.find_by(stage_no: stage_no)
+    sands = stage.sands.split(',')
+
+    @sands = Sand.all
+    if flag == "0" #remove
+      sands.delete(sand_id)
+    else #add
+      sands.push(sand_id) unless @sands.include?(sand_id)
+    end
+
+    stage.update(sands: sands.join(','))
+  end
 end

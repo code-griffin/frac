@@ -30,9 +30,9 @@
       <span class="status-text">Not Started</span>
     </div>
 
-    <button class="stage-complete-button button">
-      Stage Complete
-    </button>
+    <!--<button class="stage-complete-button button">-->
+      <!--Stage Complete-->
+    <!--</button>-->
   </div>
   <div class="status-info">
     <div class="time-info">
@@ -45,7 +45,7 @@
             Start
         </span>
         <span class="start-time time">
-            <%= stage.start_time.strftime("%l:%M") %>
+            <%= stage.start_time.strftime("%H:%M") %>
         </span>
         <span class="start-time-ampm ampm">
             <%= stage.start_time.strftime("%P") %>
@@ -57,7 +57,7 @@
             End
         </span>
         <span class="end-time time">
-            <%= stage.end_time.strftime("%l:%M") %>
+            <%= stage.end_time.strftime("%H:%M") %>
         </span>
         <span class="end-time-ampm ampm">
             <%= stage.end_time.strftime("%P") %>
@@ -69,10 +69,16 @@
 
     </div>
     <div class="button-container">
-      <span>Add/Remove Time</span>
-      <span>15 min</span>
-      <button class="remove-time">-</button>
-      <button class="add-time">+</button>
+      <div class="left">
+        <button class="stage-complete-button button">
+          Stage Complete
+        </button>
+      </div>
+      <div class="right">
+        <button class="remove-time">-</button>
+        <button class="add-time">+</button>
+        <span>Add/Remove Time</span>
+      </div>
     </div>
   </div>
   <div class="status-bar">
@@ -122,9 +128,52 @@
         total
     </span>
   </div>
-  <button class="stage-complete-button button">
-    Stage Complete
-  </button>
+
+  <div class="product-container">
+    <h4>Sand</h4>
+
+    <div>
+      <p class="product-stats">
+        Sand Total
+        <span class="product-total number">
+          <%= @sands.map(&:quantity).sum %>
+        </span>
+      </p>
+
+      <% @stage_sands = stage.sands.split(',') %>
+      <p class="product-stats">
+        Sand Used
+        <span class="product-used number">
+          <%= @sands.select{ |item| @stage_sands.include?(item.id.to_s)}.map(&:quantity).sum %>
+        </span>
+      </p>
+
+      <p class="product-stats">
+        Sand Left
+        <span class="product-left number">
+          <%= @sands.select{ |item| !@stage_sands.include?(item.id.to_s)}.map(&:quantity).sum %>
+        </span>
+      </p>
+
+    </div>
+
+    <ul class="product-checklist">
+      <li>
+        Check when loaded to update totals
+      </li>
+      <% if @sands.present? %>
+        <% @sands.each { |sand| %>
+          <li sand_id="<%=sand.id%>" class="<%= @stage_sands.include?(sand.id.to_s) ? "checked":"" %>">
+            <input type="checkbox" name="stage<%= stage.stage_no%>-cb<%=sand.id%>" id="stage<%= stage.stage_no%>-cb<%=sand.id%>" class="checkbox">
+            <label for="stage<%= stage.stage_no%>-cb<%=sand.id%>" class="product-label">
+              <span><%= sand.detail %></span>
+              <span class="amount number"><%= sand.quantity %></span>
+            </label>
+          </li>
+        <% } %>
+      <% end %>
+    </ul>
+  </div>
 
   <% if @job.current_stage == stage.stage_no
      time_to_stage_complete = (stage.end_time - Time.now).to_i

@@ -4,12 +4,15 @@
         <%= job.name %>
     </span>
     <span class="stage">
-        Stage <%= job.current_stage.to_s %>
+        Stage <%= job.current_stage.to_s %> / <%= job.stages.count %> total
     </span>
-    <span class="status">
+    <%
+       @current_stage = job.stages.find_by(:stage_no => job.current_stage)
+       @status_id = @current_stage.status_id
+    %>
+    <span class="status <%= @status_id == 2 ? "error" : "" %>">
         <%
-           @current_stage = job.stages.find_by(:stage_no => job.current_stage)
-           concat statuses.find(@current_stage.status_id).name
+           concat statuses.find(@status_id).name
         %>
     </span>
   </a>

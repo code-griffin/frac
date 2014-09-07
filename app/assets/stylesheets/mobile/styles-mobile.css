@@ -1,12 +1,17 @@
-#logo{
+html{
+    height: auto;
+    min-height: 100%;
+}
+
+#logo {
     display: none;
 }
 
-#nav a{
+#nav a {
     display: none;
 }
 
-#nav a.active{
+#nav a.active {
     background: #14a3e5;
     float: none;
     display: block;
@@ -14,33 +19,33 @@
 }
 
 #mobile-menu-button,
-#back-button{
+#back-button {
     display: block;
 }
 
 h1,
-#new-job-button{
+#new-job-button {
     display: none;
 }
 
-#job-list li:nth-child(2n){
+#job-list li:nth-child(2n) {
     background: #4d4d4d;
     margin: 0;
     padding: 0;
 }
 
-#job-list li:last-child{
+#job-list li:last-child {
     margin-bottom: 50px;
 }
 
-#job-list .job{
+#job-list .job {
     display: block;
     padding: 9px 0 9px 15px;
 }
 
 #job-tabs + .container {
-     padding-top: 74px;
- }
+    padding-top: 39px;
+}
 
 #job-tabs li {
     width: 33.33%;
@@ -51,26 +56,40 @@ h1,
     font-size: 10px;
 }
 
-.job-stage h2{
+.job-stage h2 {
     margin: 21px auto 0;
     float: none;
     text-align: center;
 }
 
-.stage-nav{
+#job-list .job-name {
+    margin: 0 0 -2px 0;
+}
+
+#job-list .status {
+    font-weight: 500;
+    clear: both;
+    margin: 0;
+}
+
+#job-list .status.error {
+    margin: 2px 0 0 0;
+}
+
+.stage-nav {
     float: none;
     margin: 0 auto;
 }
 
-.stage-nav button{
+.stage-nav button {
     float: left;
 }
 
-.stage-nav .left{
+.stage-nav .left {
     margin: -23px 0 0 29px;
 }
 
-.stage-nav .right{
+.stage-nav .right {
     float: right;
     margin: -23px 29px 0 0;
 }
@@ -79,7 +98,6 @@ h1,
     padding: 0 0 12px;
     margin: 0;
     text-align: center;
-    height: 62px;
 }
 
 .status-container > span:first-child {
@@ -87,7 +105,7 @@ h1,
 }
 
 .dropdown {
-    width: 100%!important;
+    width: 100% !important;
     background: transparent;
     margin: 2px 0 0;
     padding: 6px 13px 0;
@@ -99,25 +117,59 @@ span.dropdown:after {
     display: none;
 }
 
-.status-container .stage-complete-button{
-    display: none;
+.button-container .stage-complete-button {
+    margin: 24px 0 0 0;
+    padding: 8px 19px 11px;
 }
 
-.job-stage > .stage-complete-button{
-    display: none;
-}
-
-.update-status{
+.update-status {
     display: inline-block;
 }
 
 .status-info {
     margin: 9px 0 0;
-    padding: 0 15px 0;
+    padding: 0 12px 18px;
+}
+
+.time-info {
+    margin: 0;
+    float: none;
+}
+
+.time-info .start-time{
+    margin: 1px 42px 0 0;
+}
+
+.time-info p {
+    overflow: auto;
+    margin: 2px 0 -2px 0;
+    float: left;
+}
+
+.time-info p > span:first-child {
+    width: 48px;
 }
 
 .button-container {
-    margin: 7px 0 0 0;
+    margin: 0;
+    float: none;
+    clear: both;
+}
+
+.button-container button {
+    float: none;
+}
+
+.button-container .remove-time {
+    margin: 24px 9px 0 12px;
+}
+
+.button-container .add-time {
+    margin: 24px 0 0 0;
+}
+
+.button-container span {
+    margin: 3px 0 5px;
 }
 
 .status-bar {
@@ -131,13 +183,73 @@ select.dropdown {
     display: none;
 }
 
-span.dropdown{
+span.dropdown {
     z-index: 10;
-    display: block!important;
+    display: block !important;
 }
 
-.dropdown .custom-dropdownInner{
+.dropdown .custom-dropdownInner {
     z-index: 10;
+}
+
+.product-container {
+    padding: 0 0 20px;
+}
+
+.product-container h4 {
+    display: none;
+}
+
+.product-container .product-stats {
+    margin: 10px 0 0 0;
+    width: 33%;
+}
+
+.product-container .product-stats:first-child {
+    margin: 10px 0 0;
+}
+
+.product-container > div{
+    overflow: auto;
+}
+
+.product-container .product-checklist {
+    margin: 13px 0 0 0;
+}
+
+.product-container .product-checklist li:first-child {
+    padding: 0 0 4px 0;
+    display: block;
+}
+
+.product-container .product-checklist li:first-child:before {
+    margin: 4px 20px -4px 16px;
+}
+
+.custom-checkbox {
+    background-color: transparent;
+    margin: 0 20px 0 10px;
+}
+
+.product-container .product-label span{
+    vertical-align: top;
+    width: 25%;
+}
+
+.product-container .product-label span:first-child {
+    width: 75%;
+}
+
+.product-container .product-checklist li {
+    margin: 4px 0;
+}
+
+.product-container .product-label{
+    max-width: 100%;
+    display: block;
+    width: 100%;
+    float: none;
+    padding: 0 0 0 57px;
 }
 
 .job-stage .status-completed .status-text {

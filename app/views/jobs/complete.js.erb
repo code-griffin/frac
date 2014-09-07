@@ -1,4 +1,5 @@
 <% if @result == "success" %>
+    $('.current-stage .checkbox').iCheck('disable');
     var current_stage = $('.current-stage');
     $('.current-stage .status-completed .status').html('<%= @status.name%>')
     current_stage.find('.status-bar .bar').css('width', '100%')
@@ -13,23 +14,25 @@
         time_to_stage_complete = time_to_stage_complete < 0 ? 0 : time_to_stage_complete;
         %>
 
-        $(".current-stage .bar").animate({ width: "100%" }, <%=time_to_stage_complete * 1000%>);
+//        $(".current-stage .bar").animate({ width: "100%" }, <%=time_to_stage_complete * 1000%>);
     }
+
+    $('.current-stage .checkbox').iCheck('enable');
 
     // change current stage (completed)'s elapsed and total time based on current time
     <% time_elapsed = (@stage.end_time - @stage.start_time).to_i.abs / 3600.0 %>
-    current_stage.find('.elapsed').html('<span id="elapsed-time"><%= sprintf('%.2f', time_elapsed)%></span><span>hrs</span>')
+//    current_stage.find('.elapsed').html('<span id="elapsed-time"><%= sprintf('%.2f', time_elapsed)%></span><span>hrs</span>')
 
     // change next stages' start and end time
     <% @next_stages.each { |stage|
       time_elapsed = (stage.end_time - stage.start_time).to_i.abs / 3600.0%>
-      current_stage.find('.total').html('<%= sprintf('%.2f', time_elapsed)%> <span>hrs</span>')
+//      current_stage.find('.total').html('<%= sprintf('%.2f', time_elapsed)%> <span>hrs</span>')
       current_stage.find('input.start_time').val("<%= stage.start_time %>");
       current_stage.find('input.end_time').val("<%= stage.end_time %>");
-      current_stage.find('.start-time').html('<%= stage.start_time.strftime("%l:%M") %>')
-      current_stage.find('.start-time-ampm').html('<%= stage.start_time.strftime("%P") %>')
-      current_stage.find('.end-time').html('<%= stage.end_time.strftime("%l:%M") %>')
-      current_stage.find('.end-time-ampm').html('<%= stage.end_time.strftime("%P") %>')
+      current_stage.find('.start-time').html('<%= stage.start_time.strftime("%H:%M") %>')
+//      current_stage.find('.start-time-ampm').html('<%= stage.start_time.strftime("%P") %>')
+      current_stage.find('.end-time').html('<%= stage.end_time.strftime("%H:%M") %>')
+//      current_stage.find('.end-time-ampm').html('<%= stage.end_time.strftime("%P") %>')
       current_stage = current_stage.next();
     <% }%>
 <% else %>

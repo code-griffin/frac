@@ -49,9 +49,9 @@ $(function() {
         var job_id = $('#job-stages').attr('job_id');
         var stage_no = $(this).closest('.job-stage').attr('stage_no');
         if($(this).hasClass('add-time')) {
-            add_time = 15;
+            add_time = 30;
         } else {
-            add_time = -15;
+            add_time = -30;
         }
 
         data = {job_id: job_id, stage_no: stage_no, add_time: add_time};
@@ -80,7 +80,6 @@ $(function() {
         })
     })
 
-    console.log(interval);
     if(interval == null)
         interval = setInterval(updateElapsedTime,36000);
 

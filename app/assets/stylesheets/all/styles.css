@@ -94,7 +94,6 @@ body > .container{
     position: absolute;
     left: 0;
     right: 0;
-    height: 100%;
     top: 0;
     padding-top: 45px;
     z-index: 2;
@@ -115,7 +114,7 @@ h1{
 }
 
 .button{
-    background: #00ce1d;
+    background: #00cd1d;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
     border-radius: 7px;
@@ -189,7 +188,21 @@ h1{
     font-size: 12px;
 }
 
+#job-list .status.error{
+    color: #ff0000;
+}
+
+#job-list .status.error:before {
+    content: ' ';
+    width: 17px;
+    height: 17px;
+    background: url("/assets/error-icon.png");
+    display: inline-block;
+    margin: 0 3px -4px 0;
+}
+
 #job-tabs{
+    display: none;
     width: 100%;
     background: #00648e;
     height: 42px;
@@ -198,7 +211,7 @@ h1{
 }
 
 #job-tabs + .container{
-    padding-top: 61px;
+    padding-top: 22px;
 }
 
 #job-tabs li{
@@ -232,7 +245,6 @@ h1{
     font-weight: bold;
     margin: 21px 44px 0 37px;
     float: left;
-    width: 120px;
 }
 
 .stage-nav{
@@ -270,9 +282,8 @@ h1{
 .status-container{
     clear: both;
     padding: 8px 0 42px;
-    margin: 0 37px;
+    margin: 0 48px 0 37px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.30);
-    height: 110px;
 }
 
 .status-container > span:first-child{
@@ -335,6 +346,12 @@ span.dropdown:after{
     padding: 7px 24px;
 }
 
+.button-container .stage-complete-button{
+    margin: 15px 38px 0 0;
+    padding: 8px 24px 11px;
+    width: auto;
+}
+
 .job-stage > .stage-complete-button{
     display: none;
     float: left;
@@ -343,22 +360,26 @@ span.dropdown:after{
 }
 
 .status-info{
-    margin: 19px 0 0;
-    padding: 0 74px 0 58px;
+    margin: 20px 48px 0 36px;
+    padding: 0 0 34px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.30);
 }
 
 .time-info{
     float: left;
+    margin: 0 0 0 22px;
 }
 
 .time-info > span:first-child{
     font-size: 13px;
     opacity: 0.4;
+    display: block;
 }
 
 .time-info p{
     overflow: auto;
-    margin: 0 0 -2px 0;
+    margin: 2px 0 -2px;
+    float: left;
 }
 
 .time-info p > span{
@@ -369,7 +390,7 @@ span.dropdown:after{
     font-size: 12px;
     font-weight: 500;
     margin: 11px 0 0 0;
-    width: 73px;
+    width: 66px;
 }
 
 .time-info .time{
@@ -379,25 +400,39 @@ span.dropdown:after{
     margin: 1px 0 0;
 }
 
+.time-info .start-time{
+    margin: 1px 102px 0 0;
+}
+
 .time-info .ampm{
     font-size: 14px;
     font-weight: 500;
     color: #ff8000;
     margin: 9px 0 0 8px;
+    display: none;
 }
 
 .button-container{
     float: right;
-    text-align: center;
-    margin: 1px 0 0;
+    text-align: right;
+    margin: 1px 25px 0 0;
+}
+
+.button-container .left{
+    float: left;
+}
+
+.button-container .right{
+    float: right;
 }
 
 .button-container span{
-    font-size: 12px;
-    font-weight: bold;
-    opacity: 0.8;
+    font-size: 11px;
+    font-weight: 500;
     display: block;
-    margin: -3px 0 5px;
+    margin: 6px 0 5px;
+    color: #dddddd;
+    clear: both;
 }
 
 .button-container span:first-child{
@@ -412,13 +447,12 @@ span.dropdown:after{
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
     border-radius: 7px;
-    float: left;
 }
 
 .button-container .remove-time{
     background: #7c7c7c;
     font-size: 30px;
-    margin: 0 12px 0 4px;
+    margin: 15px 12px 0 4px;
     line-height: 38px;
     padding-bottom: 2px;
 }
@@ -427,11 +461,13 @@ span.dropdown:after{
     background: #d00000;
     font-size: 27px;
     height: 40px;
+    margin: 15px 3px 0 0;
 }
 
 .status-bar{
     margin: 46px 0 0;
     padding: 0 77px 0 58px;
+    display: none;
 }
 
 .status-bar > p{
@@ -451,11 +487,7 @@ p.elapsed{
     font-size: 16px;
 }
 
-p.elapsed #elapsed-time {
-    font-weight: bold;
-}
-
-p.elapsed span:last-child{
+p.elapsed span{
     font-size: 9px;
 }
 
@@ -483,7 +515,7 @@ p.total span{
 }
 
 .bar{
-    /*width: 73%;*/
+    width: 73%;
     height: 100%;
     background: #ff8000;
     position: absolute;
@@ -503,7 +535,7 @@ p.total span{
     position: fixed;
     top: 45px;
     left: 0;
-    background: rgba(0, 0, 0, 0.80);
+    background: rgba(0, 0, 0, 0.9);
     z-index: 4;
     font-weight: 500;
     display: none;
@@ -537,6 +569,111 @@ p.total span{
     color: #ff8000;
 }
 
+.product-container{
+    padding: 10px 30px;
+}
+
+.product-container h4{
+    font-size: 30px;
+    font-weight: 400;
+    margin: 5px 0 0 23px;
+    color: #ffffff;
+}
+
+.product-container .product-stats{
+    font-size: 12px;
+    font-weight: 500;
+    color: #bebebe;
+    text-align: center;
+    float: left;
+    margin: 16px -8px 0 0;
+    width: 140px;
+}
+
+.product-container .product-stats span{
+    font-size: 17px;
+    font-weight: bold;
+    color: #ffffff;
+    display: block;
+    margin: 1px 0 0;
+}
+
+.product-container .product-checklist{
+    clear: both;
+    margin: 72px 0 0 7px;
+}
+
+.product-container .product-checklist li{
+    margin: 6px 0 7px 0;
+    overflow: auto;
+}
+
+.product-container .product-checklist li:first-child{
+    color: rgba(255, 255, 255, 0.40);
+    font-size: 12px;
+    font-weight: 500;
+    font-style: italic;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+    padding: 0 114px 4px 0;
+    display: inline-block;
+    margin: 0;
+}
+
+.product-container .product-checklist li:first-child:before{
+    content: '';
+    width: 17px;
+    height: 17px;
+    background-image: url("/assets/checkbox-sprite.png");
+    background-size: 17px 42px;
+    background-position: 0 -25px;
+    margin: 4px 29px -4px 23px;
+    display: inline-block;
+}
+
+.custom-checkbox{
+    width: 27px;
+    height: 27px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    background-color: #797979;
+    background-image: url("/assets/checkbox-sprite.png");
+    background-size: 17px 42px;
+    background-position: 6px 5px;
+    background-repeat: no-repeat;
+    float: left;
+    margin: 0 29px 0 17px;
+}
+
+.custom-checkbox.checked{
+    background-position: 6px -21px;
+}
+
+.product-container .product-label{
+    font-size: 14px;
+    font-weight: 500;
+    margin: 3px 0 0 0;
+    display: inline-block;
+    float: left;
+    max-width: 332px;
+    cursor: default;
+}
+
+.product-container .product-label span:first-child{
+    width: 246px;
+    margin: 0;
+    display: inline-block;
+}
+
+.custom-checkbox.checked + .product-label{
+    color: #ff8000;
+}
+
 .job-stage.not-started .bar-outer {
     background: gray;
+}
+
+.start-time-ampm.ampm,
+.end-time-ampm.ampm {
+    display: none;
 }

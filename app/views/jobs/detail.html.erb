@@ -48,7 +48,7 @@
 </h1>
 
 <div id="job-stages" job_id="<%= @job.id %>">
-  <%= render :partial => @stages if @stages.present? %>
+  <%= render :partial => @stages, :locals => {:sands => @sands} if @stages.present? %>
 </div>
 
 </div>

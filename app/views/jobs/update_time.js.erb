@@ -21,16 +21,15 @@ current_stage.find('.status-bar .bar').css('width', '<%=percentage%>%')
 
 $(".current-stage .bar").stop();
 $(".current-stage .bar").animate({ width: "100%" }, <%=time_to_stage_complete * 1000%>);
-$(".current-stage ")
 
 // change next stages' start and end time
 <% @next_stages.each { |stage| %>
 current_stage.find('input.start_time').val("<%= stage.start_time %>");
 current_stage.find('input.end_time').val("<%= stage.end_time %>");
 current_stage.find('.start-time-day').html('<%= stage.start_time.strftime("%A %-m/%e") %>');
-current_stage.find('.start-time').html('<%= stage.start_time.strftime("%l:%M") %>')
+current_stage.find('.start-time').html('<%= stage.start_time.strftime("%H:%M") %>')
 current_stage.find('.start-time-ampm').html('<%= stage.start_time.strftime("%P") %>')
-current_stage.find('.end-time').html('<%= stage.end_time.strftime("%l:%M") %>')
+current_stage.find('.end-time').html('<%= stage.end_time.strftime("%H:%M") %>')
 current_stage.find('.end-time-ampm').html('<%= stage.end_time.strftime("%P") %>')
 current_stage = current_stage.next();
 <% }%>

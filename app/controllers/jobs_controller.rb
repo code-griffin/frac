@@ -11,6 +11,7 @@ class JobsController < ApplicationController
     @job = Job.find(@job_id)
     @stages = @job.stages.order(:stage_no)
     @statuses = Status.all
+    @sands = Sand.all
   end
 
   def new_job
@@ -25,7 +26,8 @@ class JobsController < ApplicationController
           :status_id => Status.first.id,
           :start_time => @start_time,
           :end_time => @end_time,
-          :completed => false
+          :completed => false,
+          :sands => ''
       )
       @start_time = @end_time
     end
@@ -85,13 +87,81 @@ class JobsController < ApplicationController
     end
   end
 
-  def init_status
+  def add_sand
+    job_id = params[:job_id]
+    stage_no = params[:stage_no]
+    sand_id = params[:sand_id]
+    flag = params[:flag]
+
+    @job = Job.find(job_id)
+
+    if @job.present? && @job.current_stage == stage_no.to_i
+      @result = "success"
+      @job.add_sand(stage_no, sand_id, flag)
+    end
+  end
+
+  def init_data
     if Status.count == 0
-      Status.create!(:name => 'Pumping (No Problems)')
-      Status.create!(:name => 'Pumping (With Problems)')
-      Status.create!(:name => 'Resource Delays')
-      Status.create!(:name => 'Fluid Treatment')
-      Status.create!(:name => 'Other Problem')
+      Status.create!(:name => 'Pumping In Progress')
+      Status.create!(:name => 'Pumping Is Down')
+
+      job1 = Job.create(:name => 'Ham #18081', :current_stage => 1)
+      stage_count = 52
+      start_time = Time.now
+      stage_count.times do |j|
+        end_time = start_time + 3 * 60 * 60
+        job1.stages.create!(
+            :stage_no => j+1,
+            :status_id => 1,
+            :start_time => start_time,
+            :end_time => end_time,
+            :completed => false,
+            :sands => ""
+        )
+        start_time = end_time
+      end
+
+      job2 = Job.create(:name => 'University land 09', :current_stage => 1)
+      stage_count = 42
+      start_time = Time.now
+      stage_count.times do |j|
+        end_time = start_time + 3 * 60 * 60
+        job2.stages.create!(
+            :stage_no => j+1,
+            :status_id => 1,
+            :start_time => start_time,
+            :end_time => end_time,
+            :completed => false,
+            :sands => ""
+        )
+        start_time = end_time
+      end
+
+      job3 = Job.create(:name => 'Halfman 1214', :current_stage => 1)
+      stage_count = 55
+      start_time = Time.now
+      stage_count.times do |j|
+        end_time = start_time + 3 * 60 * 60
+        job3.stages.create!(
+            :stage_no => j+1,
+            :status_id => 1,
+            :start_time => start_time,
+            :end_time => end_time,
+            :completed => false,
+            :sands => ""
+        )
+        start_time = end_time
+      end
+
+      Sand.create(:detail => '100 Mesh - White', :quantity => 125000)
+      Sand.create(:detail => '100 Mesh - White', :quantity => 35000)
+      Sand.create(:detail => '100 Mesh - White', :quantity => 52500)
+      Sand.create(:detail => '40-70 Mesh - Texas Brite', :quantity => 42500)
+      Sand.create(:detail => '40-70 Mesh - Texas Brite', :quantity => 53000)
+      Sand.create(:detail => '40-70 Mesh - Texas Brite', :quantity => 31500)
+      Sand.create(:detail => '40-70 Mesh - Texas Brite', :quantity => 10000)
+      Sand.create(:detail => '40-70 Mesh - Preferred RCS', :quantity => 20000)
     end
   end
 
