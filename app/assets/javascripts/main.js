@@ -157,6 +157,8 @@ $(document).ready(function(){
             dropdown.val(option_value);
             dropdown.trigger('render');
             overlay.fadeOut();
+
+            update_status(option_value);
         })
     });
 
