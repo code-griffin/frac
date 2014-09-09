@@ -129,7 +129,7 @@
     </span>
   </div>
 
-  <div class="product-container">
+  <div class="product-container<%= @job.current_stage == stage.stage_no ? " loading" : ""%>">
     <h4>Sand</h4>
 
     <div>
@@ -163,7 +163,7 @@
       </li>
       <% if @sands.present? %>
         <% @sands.each { |sand| %>
-          <li sand_id="<%=sand.id%>" class="<%= @stage_sands.include?(sand.id.to_s) ? "checked":"" %>">
+          <li sand_id="<%=sand.id%>" class="sand<%= @stage_sands.include?(sand.id.to_s) ? " checked":"" %><%= stage.stage_no == @job.stages.count && sand.id == @sands.count ? " last" : "" %>">
             <input type="checkbox" name="stage<%= stage.stage_no%>-cb<%=sand.id%>" id="stage<%= stage.stage_no%>-cb<%=sand.id%>" class="checkbox">
             <label for="stage<%= stage.stage_no%>-cb<%=sand.id%>" class="product-label">
               <span><%= sand.detail %></span>

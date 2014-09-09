@@ -20,7 +20,7 @@ current_stage.find('p.total').html('<%= sprintf('%.2f', time_total)%> <span>hrs<
 current_stage.find('.status-bar .bar').css('width', '<%=percentage%>%')
 
 $(".current-stage .bar").stop();
-$(".current-stage .bar").animate({ width: "100%" }, <%=time_to_stage_complete * 1000%>);
+//$(".current-stage .bar").animate({ width: "100%" }, <%=time_to_stage_complete * 1000%>);
 
 // change next stages' start and end time
 <% @next_stages.each { |stage| %>

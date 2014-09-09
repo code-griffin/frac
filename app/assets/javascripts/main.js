@@ -14,11 +14,16 @@ function update_status(value) {
 }
 
 $(document).ready(function(){
-    container_height();
+//    container_height();
     $('.dropdown').customSelect({
         customClass:'custom-dropdown'
     });
 
+    $('#job-stages .job-stage li.last').on('ifCreated', function(event){
+//        $('li.sand').css('visibility', 'visible');
+        $('li.sand').show();
+        $('.current-stage .product-container').removeClass('loading');
+    });
     $('.checkbox').iCheck({
         checkboxClass: 'custom-checkbox'
     });
@@ -31,49 +36,7 @@ $(document).ready(function(){
         $(this).html(numberWithCommas(value));
     });
 
-    $('.checkbox').on('ifChecked', function(event){
-
-        var product_total = $(this).closest('.product-container').find('.product-total').text();
-
-        var product_used = $(this).closest('.product-container').find('.product-used').text();
-        product_used = Number(product_used.replace(/[^\d.-]/g, ''));
-
-        var product_left = $(this).closest('.product-container').find('.product-left').text();
-        product_left = Number(product_left.replace(/[^\d.-]/g, ''));
-
-        var amount = $(this).parent().next().find('.amount').text();
-        amount = Number(amount.replace(/[^\d.-]/g, ''));
-
-        var flag = 0;
-        if( !$(this).parent().hasClass('checked')){
-            product_left = product_left - amount;
-            product_used = product_used + amount;
-            flag = 1;
-        }
-        else{
-            product_left = product_left + amount;
-            product_used = product_used - amount;
-        }
-
-        var sand_id = $(this).closest('li').attr('sand_id');
-        var job_id = $('#job-stages').attr('job_id');
-        var stage_no = $(this).closest('.job-stage').attr('stage_no');
-
-        data = {job_id: job_id, stage_no: stage_no, sand_id: sand_id, flag: flag};
-        console.log(data);
-        $.ajax({
-            type:'PUT',
-            url: '/jobs/add_sand',
-            data: data,
-            beforeSend: function(request) { request.setRequestHeader("Accept", "text/javascript"); },
-            success: function(res) {}
-        })
-
-        $(this).closest('.product-container').find('.product-left').html(numberWithCommas(product_left));
-        $(this).closest('.product-container').find('.product-used').html(numberWithCommas(product_used));
-    });
-
-    $('.checkbox').on('ifUnchecked', function(event){
+    $('.checkbox').on('ifToggled', function(event){
 
         var product_total = $(this).closest('.product-container').find('.product-total').text();
 
@@ -266,8 +229,7 @@ function container_height(){
 
     if(window_height >= container_height){
         $('.container').css('height', window_height);
-    }
-    else{
+    } else{
         $('.container').css('height', 'auto');
     }
 }
