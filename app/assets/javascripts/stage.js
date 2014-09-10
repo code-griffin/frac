@@ -22,24 +22,6 @@ $(function() {
         })
     });
 
-//    $('.current-stage .update-status, .current-stage .custom-dropdownInner').bind('click', function() {
-//
-//        var job_id = $('#job-stages').attr('job_id');
-//        var stage_no = $(this).closest('.job-stage').attr('stage_no');
-//        var status_id = $('.status-container select').val();
-//
-//        data = {job_id: job_id, stage_no: stage_no, status_id: status_id};
-//
-//        $(this).addClass('working')
-//        $.ajax({
-//            type:'PUT',
-//            url: '/jobs/complete',
-//            data: data,
-//            beforeSend: function(request) { request.setRequestHeader("Accept", "text/javascript"); },
-//            success: function(res) {}
-//        })
-//    });
-
     $(document.body).on('click', '.current-stage .add-time, .current-stage .remove-time', function() {
 
         if($('.current-stage .add-time').hasClass('working')) return;

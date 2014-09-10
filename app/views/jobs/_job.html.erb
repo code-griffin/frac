@@ -10,7 +10,7 @@
        @current_stage = job.stages.find_by(:stage_no => job.current_stage)
        @status_id = @current_stage.status_id
     %>
-    <span class="status <%= @status_id == 2 ? "error" : "" %>">
+    <span class="status<%= @status_id == 2 ? " error" : "" %>">
         <%
            concat statuses.find(@status_id).name
         %>

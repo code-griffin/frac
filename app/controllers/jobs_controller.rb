@@ -6,10 +6,11 @@ class JobsController < ApplicationController
   end
 
   def detail
-    @job_id = params[:id]
+    job_id = params[:id]
 
-    @job = Job.find(@job_id)
-    @stages = @job.stages.order(:stage_no)
+    @job = Job.find(job_id)
+    @stages = @job.stages.find_by(stage_no: @job.current_stage)
+    # @stages = @job.stages.order(:stage_no)
     @statuses = Status.all
     @sands = Sand.all
   end
@@ -34,6 +35,22 @@ class JobsController < ApplicationController
     @statuses = Status.all
   end
 
+  def change_stage
+    job_id = params[:job_id]
+    stage_no = params[:stage_no]
+
+    @result = "fail"
+
+    @job = Job.find(job_id)
+    @stages = @job.stages.find_by(stage_no: stage_no)
+    @statuses = Status.all
+    @sands = Sand.all
+    if @job.present? && @stages.present?
+      @result = "success"
+    end
+
+  end
+
   def complete
     job_id = params[:job_id]
     stage_no = params[:stage_no]
@@ -50,9 +67,10 @@ class JobsController < ApplicationController
         @job.current_stage += 1
       end
       @job.save!
-      @next_stages = @job.stages.where("stage_no >= ?", stage_no).order(:stage_no)
-      @next_stage = @job.stages.find_by(stage_no: stage_no.to_i+1)
-      @stage = @job.stages.find_by(stage_no: stage_no)
+      @stages = @job.stages.find_by(stage_no: stage_no.to_i+1)
+      @sands = Sand.all
+      @statuses = Status.all
+      render 'change_stage'
     end
   end
 

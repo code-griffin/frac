@@ -188,11 +188,13 @@ h1{
     font-size: 12px;
 }
 
-#job-list .status.error{
+#job-list .status.error,
+#job-stages .status.error{
     color: #ff0000;
 }
 
-#job-list .status.error:before {
+#job-list .status.error:before,
+#job-stages .status.error:before{
     content: ' ';
     width: 17px;
     height: 17px;
@@ -232,13 +234,13 @@ h1{
     color: #2e2e2e;
 }
 
-.job-stage{
-    display: none;
-}
+/*.job-stage{*/
+    /*display: none;*/
+/*}*/
 
-.job-stage.active{
-    display: block;
-}
+/*.job-stage.active{*/
+    /*display: block;*/
+/*}*/
 
 .job-stage h2{
     font-size: 26px;

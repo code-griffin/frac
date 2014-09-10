@@ -72,14 +72,3 @@
 .current-stage .bar-outer {
     color: #ffffff;
 }
-
-.product-checklist li.sand {
-    display: none;
-    /*visibility: hidden;*/
-}
-
-.current-stage .product-container.loading {
-    background: url("/assets/spinner.gif") no-repeat center;
-    background-size: 30px;
-    opacity: 0.4;
-}

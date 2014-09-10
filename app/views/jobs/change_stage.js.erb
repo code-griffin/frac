@@ -1,0 +1,20 @@
+<% if @result == "success" %>
+    $('#job-stages').html("<%= escape_javascript(render(:partial => @stages, :locals => {:sands => @sands})) %>");
+    $('.dropdown').customSelect({
+        customClass:'custom-dropdown'
+    });
+
+    $('.number').each(function(){
+        var value = numberWithCommas($(this).html());
+        $(this).html(numberWithCommas(value));
+    });
+
+    $('.checkbox').iCheck({
+        checkboxClass: 'custom-checkbox'
+    });
+    $('.checkbox').iCheck('disable');
+    $('.current-stage .checkbox').iCheck('enable');
+    $('li.checked .checkbox').iCheck('check');
+<% else %>
+
+<% end %>

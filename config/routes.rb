@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   match '/jobs/detail', :to => 'jobs#detail', :via => :get
   match '/jobs/complete', :to => 'jobs#complete', :via => :put
   match '/jobs/update_status', :to => 'jobs#update_status', :via => :put
+  match '/jobs/change_stage', :to => 'jobs#change_stage', :via => :put
   match '/jobs/update_time', :to => 'jobs#update_time', :via => :put
   match '/jobs/add_sand', :to => 'jobs#add_sand', :via => :put
   match '/jobs/new_job', :to => 'jobs#new_job', :via => :put
   match '/jobs/init_data', :to => 'jobs#init_data', :via => :get
+
   resources :jobs do
 
   end

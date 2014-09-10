@@ -42,11 +42,10 @@ class Job < ActiveRecord::Base
     stage = stages.find_by(stage_no: stage_no)
     sands = stage.sands.split(',')
 
-    @sands = Sand.all
     if flag == "0" #remove
       sands.delete(sand_id)
     else #add
-      sands.push(sand_id) unless @sands.include?(sand_id)
+      sands.push(sand_id) unless sands.include?(sand_id.to_s)
     end
 
     stage.update(sands: sands.join(','))

@@ -1,4 +1,4 @@
-<div class="job-stage<%= @job.current_stage > stage.stage_no ? " completed" : @job.current_stage < stage.stage_no ? " not-started" : " active current-stage" %>" stage_no="<%= stage.stage_no %>">
+<div class="job-stage<%= @job.current_stage > stage.stage_no ? " completed" : @job.current_stage < stage.stage_no ? " not-started" : " current-stage" %>" stage_no="<%= stage.stage_no %>">
 
   <h2>Stage <%= stage.stage_no%></h2>
 
@@ -22,7 +22,7 @@
     </a>
 
     <div class="status-completed">
-      <span class="status"><%=  @statuses.find(stage.status_id).name %></span>
+      <span class="status<%= stage.status_id == 2 ? " error" : "" %>"><%= @statuses.find(stage.status_id).name %></span>
       <span class="status-text">Complete</span>
     </div>
 
@@ -30,9 +30,6 @@
       <span class="status-text">Not Started</span>
     </div>
 
-    <!--<button class="stage-complete-button button">-->
-      <!--Stage Complete-->
-    <!--</button>-->
   </div>
   <div class="status-info">
     <div class="time-info">
@@ -129,7 +126,7 @@
     </span>
   </div>
 
-  <div class="product-container<%= @job.current_stage == stage.stage_no ? " loading" : ""%>">
+  <div class="product-container">
     <h4>Sand</h4>
 
     <div>
@@ -163,7 +160,7 @@
       </li>
       <% if @sands.present? %>
         <% @sands.each { |sand| %>
-          <li sand_id="<%=sand.id%>" class="sand<%= @stage_sands.include?(sand.id.to_s) ? " checked":"" %><%= stage.stage_no == @job.stages.count && sand.id == @sands.count ? " last" : "" %>">
+          <li sand_id="<%=sand.id%>" class="sand<%= @stage_sands.include?(sand.id.to_s) ? " checked":"" %>">
             <input type="checkbox" name="stage<%= stage.stage_no%>-cb<%=sand.id%>" id="stage<%= stage.stage_no%>-cb<%=sand.id%>" class="checkbox">
             <label for="stage<%= stage.stage_no%>-cb<%=sand.id%>" class="product-label">
               <span><%= sand.detail %></span>
