@@ -9,7 +9,7 @@ $(document).ready(function(){
     $('.current-stage .checkbox').iCheck('enable');
     $('li.checked .checkbox').iCheck('check');
 
-    $(document.body).on('ifToggled', '.checkbox', function(event){
+    $(document.body).on('ifClicked', '.current-stage .checkbox', function(event){
 
         var product_total = $(this).closest('.product-container').find('.product-total').text();
 
